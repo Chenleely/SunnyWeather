@@ -23,7 +23,7 @@ public class NetRepo {
             this.url=url;
         }
         public Request getRequest() {
-            if(TextUtils.isEmpty(param.key)||TextUtils.isEmpty(param.value)){
+            if(param==null || TextUtils.isEmpty(param.key)||TextUtils.isEmpty(param.value)){
                 request=new Request.Builder().url(url).get().build();
             }else{
                 request=new Request.Builder().url(url).addHeader(param.getKey(), param.getValue()).build();

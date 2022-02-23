@@ -32,6 +32,7 @@ public class PrefTools {
     }
 
     public static Object get(Context context,String key,Object defaultObject){
+        if (defaultObject==null){return null;}
         String type = defaultObject.getClass().getSimpleName();
         SharedPreferences prefs=context.getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
         if ("String".equals(type)) {

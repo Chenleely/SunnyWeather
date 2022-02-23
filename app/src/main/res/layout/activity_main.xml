@@ -1,9 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="ui.MainActivity">
+    android:background="#0000"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:id="@+id/bing_pic_img"/>
+    <Button
+        android:layout_width="40dp"
+        android:id="@+id/checkout_city_btn"
+        android:background="@drawable/city_home"
+        android:layout_gravity="end|top"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="15dp"
+        android:layout_height="40dp"/>
+    <Button
+        android:layout_width="40dp"
+        android:id="@+id/checkout_moments_btn"
+        android:background="@drawable/user_home"
+        android:layout_gravity="start|top"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_height="40dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipe_refresh">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/weather_layout"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical">
+                <include layout="@layout/title"/>
+                <include layout="@layout/now"/>
+                <include layout="@layout/forecast"/>
+                <include layout="@layout/aqi"/>
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</FrameLayout>

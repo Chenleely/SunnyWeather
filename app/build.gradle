@@ -35,6 +35,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'com.alibaba:fastjson:1.2.76'
     implementation 'com.alibaba:fastjson:1.1.72.android'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation files('libs/QWeather_Public_Android_V4.8.jar')
     testImplementation 'junit:junit:4.+'
