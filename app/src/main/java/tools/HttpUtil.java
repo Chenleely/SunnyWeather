@@ -1,8 +1,14 @@
 package tools;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
+import com.example.sunnyweather.R;
+
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
@@ -15,7 +21,7 @@ public class HttpUtil {
     private volatile static HttpUtil httpUtil;
     private volatile static OkHttpClient client;
     private HttpUtil(){}
-    public static HttpUtil getHttpUtil(){
+    public static void init(){
         synchronized (HttpUtil.class){
             if (httpUtil==null){
                 httpUtil=new HttpUtil();
@@ -27,11 +33,10 @@ public class HttpUtil {
                         .build();
             }
         }
-        return httpUtil;
     }
-    public static void doGet(String url,final CallbackListener listener){
-        final Request request=new Request.Builder().get().url(url).build();
-        Call call=client.newCall(request);
+    public static void doGet(NetRepo.GetRequest request, final CallbackListener listener){
+        init();
+        Call call=client.newCall(request.getRequest());
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -41,7 +46,26 @@ public class HttpUtil {
             @Override
             public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
                 if(response.code()==200){
-                    listener.success(response.body().toString());
+                    listener.success(response.body().string());
+                }else{
+                    listener.failed(response.code());
+                }
+            }
+        });
+    }
+    public static void doPost(NetRepo.PostRequest request,final CallbackListener listener){
+        init();
+        Call call=client.newCall(request.getRequest());
+        call.enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                listener.failed(-1);
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                if(response.code()==200){
+                    listener.success(response.body().string());
                 }else{
                     listener.failed(response.code());
                 }
