@@ -1,5 +1,6 @@
 package user;
 
+<<<<<<< HEAD
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Editable;
@@ -166,3 +167,7 @@ public class Register extends BaseActivity implements View.OnClickListener{
                 .setNegativeButton("取消",null).show();
     }
 }
+=======
+public class Register {
+}
+>>>>>>> 7ef545fb535489aa9f4ee73ecad50b94a1b8a777

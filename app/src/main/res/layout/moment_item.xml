@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/moment_user_avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:src="@drawable/user1"/>
+
+    <TextView
+        android:id="@+id/moment_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/moment_user_avatar"
+        android:text="Chenleely"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/moment_user_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moment_user_name"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@id/moment_user_avatar"
+        android:gravity="start"
+        android:maxLines="6"
+        android:text="我emo了！"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <ImageView
+        android:id="@+id/moment_user_png"
+        android:layout_width="260dp"
+        android:layout_height="130dp"
+        android:layout_below="@id/moment_user_comment"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_bk1" />
+
+    <TextView
+        android:id="@+id/moment_user_update_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/moment_user_png"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="5dp"
+        android:text="两小时前"
+        android:textColor="#AAAAAA"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:id="@+id/moment_user_like"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/moment_user_png"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="170dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_like" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/moment_like_nums"
+        android:text="15"
+        android:textSize="14dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="155dp"
+        android:layout_below="@id/moment_user_png"
+        android:layout_alignParentRight="true"/>
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/moment_user_comment_btn"
+        android:src="@drawable/ic_comment"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="6dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="90dp"
+        android:layout_below="@id/moment_user_png" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/moment_comment_nums"
+        android:text="15"
+        android:textSize="14dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="76dp"
+        android:layout_below="@id/moment_user_png"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

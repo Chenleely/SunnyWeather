@@ -1,16 +1,25 @@
 package ui;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.provider.Settings;
 import android.util.Log;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,16 +39,20 @@ public class BaseActivity extends AppCompatActivity {
     protected Location nowLocation;
     protected QWeatherTools qWeatherTools;
     protected UserStateInfo userStateInfo;
+    protected ProgressDialog mProgressDialog;
+    protected Handler mHandler;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         qWeatherTools = QWeatherTools.getqWeatherTools();
         gpsUtils=GPSUtils.getInstance(this);
         userStateInfo=UserStateInfo.getUserStateInfo();
+        mProgressDialog=new ProgressDialog(this);
+        mProgressDialog.setMessage("加载中，请稍后...");
+        mProgressDialog.setCancelable(false);
+        //setStatus();
         //showCheckPermissions();
     }
-
-
 
     //是否检查位置权限,6.0以下无需获取权限
     protected void checkPermission(){
@@ -85,4 +98,67 @@ public class BaseActivity extends AppCompatActivity {
                 }
         }
     }
+    protected void showProgressDialog(){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mProgressDialog.show();
+            }
+        });
+    }
+    //状态栏透明
+    protected void setStatus(){
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            int flagTranslucentStatus = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+//            int flagTranslucentNavigation = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                Window window = getWindow();
+//                WindowManager.LayoutParams attributes = window.getAttributes();
+//                attributes.flags |= flagTranslucentNavigation;
+//                window.setAttributes(attributes);
+//                getWindow().setStatusBarColor(Color.TRANSPARENT);
+//            } else {
+//                Window window = getWindow();
+//                WindowManager.LayoutParams attributes = window.getAttributes();
+//                attributes.flags |= flagTranslucentStatus | flagTranslucentNavigation;
+//                window.setAttributes(attributes);
+//            }
+//        }
+        if (Build.VERSION.SDK_INT>=21){
+            View view=getWindow().getDecorView();
+            view.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+    }
+
+    protected void showToast(Context context,String msg){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(context,msg,Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    protected void sendFaliedMsg(){
+        Message faliMsg=new Message();
+        faliMsg.what=3;
+        mHandler.sendMessage(faliMsg);
+    }
+    protected void sendSuccessMsg(Bundle bundle){
+        Message successMsg=new Message();
+        successMsg.what=2;
+        successMsg.setData(bundle);
+        mHandler.sendMessage(successMsg);
+    }
+    protected void sendSuccessMsg(){
+        Message successMsg=new Message();
+        successMsg.what=2;
+        mHandler.sendMessage(successMsg);
+    }
+    protected void sendProMsg() {
+        Message successMsg = new Message();
+        successMsg.what = 1;
+        mHandler.sendMessage(successMsg);
+    }
+
 }

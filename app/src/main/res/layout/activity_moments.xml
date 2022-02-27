@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/moment_swipe_refresh">
+    <ui.MyScrollView
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/moment_scroll"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/moment_background"/>
+                <RelativeLayout
+                    android:id="@+id/user_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp">
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_user"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"/>
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_below="@id/user_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/moments_list"/>
+            </RelativeLayout>
+        </ui.MyScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <RelativeLayout
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/moment_top_bar"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/moment_back_btn"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="圈子"
+            android:id="@+id/moment_circle"
+            android:layout_marginTop="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="centerCrop"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/ic_camera_white"
+            android:layout_marginRight="15dp"
+            android:id="@+id/moment_share"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+        <!--        <ListView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:id="@+id/moment_list"/>-->
+
+</RelativeLayout>
