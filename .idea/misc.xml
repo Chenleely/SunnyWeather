@@ -3,11 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/SunnyWeather/app/src/main/res/layout/login.xml" value="0.3494791666666667" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/drawable/radius_back_1.xml" value="0.34739583333333335" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/drawable/radius_border.xml" value="0.3101851851851852" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/drawable/round_bck.xml" value="0.63671875" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/activity_comment.xml" value="0.33125" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/activity_moments.xml" value="0.25" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/add_city.xml" value="0.25" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/aqi.xml" value="0.15" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/city_item.xml" value="0.1" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/comment_item.xml" value="0.33125" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/comment_list.xml" value="0.2959830866807611" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/create_moment.xml" value="0.33125" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/forecast.xml" value="0.1" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/forecast_item.xml" value="0.22" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/login.xml" value="0.33125" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/manage_my_monment.xml" value="0.33125" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/moment_item.xml" value="0.25" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/moments.xml" value="0.33125" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/now.xml" value="0.1" />
+        <entry key="..\:/SunnyWeather/app/src/main/res/layout/title.xml" value="0.22" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

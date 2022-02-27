@@ -5,7 +5,7 @@ public class UserStateInfo {
     private UserStateInfo(){}
     private String userToken;
     private boolean state;//检测token是否有效
-    private boolean isLogin;//判断登录状态
+    private boolean isLogin;//判断登录状态 true:已经登录  false:未登录
 
     public void login(){
         this.isLogin=true;
@@ -26,6 +26,7 @@ public class UserStateInfo {
     }
     public void setUserToken(String userToken) {
         this.userToken = userToken;
+        NetRepo.token=this.userToken;
     }
     public boolean isState() {
         return state;

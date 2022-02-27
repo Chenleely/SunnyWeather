@@ -44,6 +44,7 @@ import tools.HttpUtil;
 import tools.NetRepo;
 import tools.PrefTools;
 import tools.Util;
+import user.Register;
 
 public class MainActivity extends BaseActivity {
     private String TAG="MainActivity";
@@ -76,6 +77,10 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setStatus();
+        if(userStateInfo.isLogin()==false){
+            Intent intent=new Intent(MainActivity.this, Register.class);
+            startActivity(intent);
+        }
         mLocation= (String) PrefTools.get(this,"location","");
         cityName=(String)PrefTools.get(this,"city_name","");
         bindViewComponent();

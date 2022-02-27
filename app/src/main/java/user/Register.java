@@ -13,8 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.widget.AlertDialogLayout;
-
 import com.alibaba.fastjson.JSON;
 import com.example.sunnyweather.R;
 
@@ -23,13 +21,12 @@ import okhttp3.MediaType;
 import tools.HttpUtil;
 import tools.NetRepo;
 import tools.PrefTools;
-import tools.UserStateInfo;
 import ui.BaseActivity;
 import ui.MainActivity;
 
 public class Register extends BaseActivity implements View.OnClickListener{
     //声明变量
-    private EditText Email,password;
+    private EditText emailEdit,password;
     private Button LoginButton,LoginError,LoginRegister;
     private Button bt_Email_clear;
     private Button bt_pwd_clear;
@@ -42,7 +39,7 @@ public class Register extends BaseActivity implements View.OnClickListener{
     super.onCreate(savedInstanceState);
     setContentView(R.layout.login);
 
-    Email=(EditText) findViewById(R.id.Email);
+    emailEdit =(EditText) findViewById(R.id.Email);
     password=(EditText) findViewById(R.id.password);
     bt_Email_clear=(Button) findViewById(R.id.bt_Email_clear);
     bt_pwd_clear=(Button)findViewById(R.id.bt_pwd_clear);
@@ -60,11 +57,11 @@ public class Register extends BaseActivity implements View.OnClickListener{
     LoginRegister.setOnClickListener(this);
     String email= (String) PrefTools.get(Register.this,"userEmail","");
     String pass= (String) PrefTools.get(Register.this,"userPass","");
-    if (email!=null&&pass!=null){
-       Email.setText(email);
-       password.setText(pass);
-       login();
-    }
+    if (email!=null && pass!=null && !email.equals("") && !pass.equals("")){
+           emailEdit.setText(email);
+           password.setText(pass);
+           login();
+        }
     }
     private void initWatcher(){
      Email_watcher=new TextWatcher() {
@@ -78,7 +75,7 @@ public class Register extends BaseActivity implements View.OnClickListener{
 
             @Override
             public void afterTextChanged(Editable editable) {
-                Email.setText("");
+                emailEdit.setText("");
                 if (editable.toString().length()>0){
                     bt_Email_clear.setVisibility(View.VISIBLE);
                 }else{
@@ -86,7 +83,7 @@ public class Register extends BaseActivity implements View.OnClickListener{
                 }
             }
         };
-        password_watcher=new TextWatcher() {
+        password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -100,13 +97,13 @@ public class Register extends BaseActivity implements View.OnClickListener{
             @Override
             public void afterTextChanged(Editable editable) {
                 password.setText("");
-                if(editable.toString().length()>0){
+                if(password.getText().toString().length()>0){
                     bt_pwd_clear.setVisibility(View.VISIBLE);
                 }else{
-                    bt_pwd_clear.setVisibility(View.INVISIBLE);
+                    bt_pwd_clear.setVisibility(View.GONE);
                 }
             }
-        };
+        });
     }
 
     @Override
@@ -125,7 +122,7 @@ public class Register extends BaseActivity implements View.OnClickListener{
     }
     private UserInfo.RegisterModel registerModel=new UserInfo.RegisterModel("","");
     private void getPassAndEmail(){
-        String inputEmail=Email.getText().toString();
+        String inputEmail= emailEdit.getText().toString();
         String inputPass=password.getText().toString();
         if(TextUtils.isEmpty(inputEmail) || TextUtils.isEmpty(inputPass)){
             Toast.makeText(this,"账户或者密码为空",Toast.LENGTH_SHORT).show();
@@ -153,7 +150,7 @@ public class Register extends BaseActivity implements View.OnClickListener{
                     userStateInfo.setUserToken(backModel.Data.Token);
                     userStateInfo.setState(true);
                     userStateInfo.login();
-                    PrefTools.put(Register.this,"userEmail",Email.getText().toString());
+                    PrefTools.put(Register.this,"userEmail", emailEdit.getText().toString());
                     PrefTools.put(Register.this,"userPass",password.getText().toString());
                     Intent intent=new Intent(Register.this,MainActivity.class);
                     startActivity(intent);
