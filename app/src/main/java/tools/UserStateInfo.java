@@ -33,4 +33,16 @@ public class UserStateInfo {
     public void setState(boolean state) {
         this.state = state;
     }
+
+    public static void setUserStateInfo(UserStateInfo userStateInfo) {
+        UserStateInfo.userStateInfo = userStateInfo;
+    }
+
+    public boolean isLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(boolean login) {
+        isLogin = login;
+    }
 }
