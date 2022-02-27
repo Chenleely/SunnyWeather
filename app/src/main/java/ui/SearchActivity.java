@@ -34,6 +34,7 @@ public class SearchActivity extends BaseActivity implements CityAdapter.onCityCl
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_city);
+        setStatus();
         locationBeans=new ArrayList<>();
         searchView=(SearchView) findViewById(R.id.search_city_view);
         listView=(ListView) findViewById(R.id.city_result);

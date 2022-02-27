@@ -43,6 +43,7 @@ import okhttp3.MediaType;
 import tools.HttpUtil;
 import tools.NetRepo;
 import tools.PrefTools;
+import tools.Util;
 
 public class MainActivity extends BaseActivity {
     private String TAG="MainActivity";
@@ -86,7 +87,8 @@ public class MainActivity extends BaseActivity {
         momentsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent=new Intent(MainActivity.this,MomentsActivity.class);
+                startActivity(intent);
             }
         });
         checkoutBtn=(Button)findViewById(R.id.checkout_city_btn);
@@ -161,7 +163,7 @@ public class MainActivity extends BaseActivity {
                 if (Code.OK == weatherBean.getCode()) {
                     String time=weatherBean.getNow().getObsTime();
                     mWeather.setCityName(cityName);
-                    mWeather.setUpdateTime(weatherBean.getNow().getObsTime());
+                    mWeather.setUpdateTime(Util.formatUtcTime(weatherBean.getNow().getObsTime()));
                     mWeather.setTmp(weatherBean.getNow().getTemp());
                     mWeather.setWeather_info(weatherBean.getNow().getText());
                     count.incrementAndGet();
