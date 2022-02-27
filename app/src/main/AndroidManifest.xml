@@ -37,6 +37,11 @@
         <activity
             android:name="ui.SearchActivity"
             android:exported="true" />
+        <activity
+            android:name="user.Register"
+            android:exported="true" >
+
+        </activity>
     </application>
 
 </manifest>
