@@ -116,7 +116,7 @@ public class MainActivity extends BaseActivity {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-        String bingPic=(String) PrefTools.get(this,"bing_pic",null);
+        String bingPic=(String) PrefTools.get(this,"bing_pic","");
         if (bingPic==null){
             Glide.with(this).load(bingPic).into(bingImage);
         }else{

@@ -26,7 +26,7 @@
             android:name="ui.MomentsActivity"
             android:exported="false" />
         <activity
-            android:name="user.Register"
+            android:name="ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,6 +37,11 @@
         <activity
             android:name="ui.SearchActivity"
             android:exported="true" />
+        <activity
+            android:name="user.Register"
+            android:exported="true" >
+
+        </activity>
     </application>
 
 </manifest>

@@ -1,7 +1,8 @@
 package user;
 
-<<<<<<< HEAD
+
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -21,6 +22,7 @@ import mode.UserInfo;
 import okhttp3.MediaType;
 import tools.HttpUtil;
 import tools.NetRepo;
+import tools.PrefTools;
 import tools.UserStateInfo;
 import ui.BaseActivity;
 import ui.MainActivity;
@@ -56,6 +58,13 @@ public class Register extends BaseActivity implements View.OnClickListener{
     LoginButton.setOnClickListener(this);
     LoginError.setOnClickListener(this);
     LoginRegister.setOnClickListener(this);
+    String email= (String) PrefTools.get(Register.this,"userEmail","");
+    String pass= (String) PrefTools.get(Register.this,"userPass","");
+    if (email!=null&&pass!=null){
+       Email.setText(email);
+       password.setText(pass);
+       login();
+    }
     }
     private void initWatcher(){
      Email_watcher=new TextWatcher() {
@@ -144,6 +153,11 @@ public class Register extends BaseActivity implements View.OnClickListener{
                     userStateInfo.setUserToken(backModel.Data.Token);
                     userStateInfo.setState(true);
                     userStateInfo.login();
+                    PrefTools.put(Register.this,"userEmail",Email.getText().toString());
+                    PrefTools.put(Register.this,"userPass",password.getText().toString());
+                    Intent intent=new Intent(Register.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
 
@@ -160,14 +174,16 @@ public class Register extends BaseActivity implements View.OnClickListener{
         getPassAndEmail();
     }
     public void error(){
-        new AlertDialog.Builder(this).setTitle("错误").setMessage("邮箱或密码错误")
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                new AlertDialog.Builder(Register.this).setTitle("错误").setMessage("邮箱或密码错误")
 
-                .setPositiveButton("确定",null)
+                        .setPositiveButton("确定",null)
 
-                .setNegativeButton("取消",null).show();
+                        .setNegativeButton("取消",null).show();
+            }
+        });
     }
 }
-=======
-public class Register {
-}
->>>>>>> 7ef545fb535489aa9f4ee73ecad50b94a1b8a777
+
