@@ -6,6 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/commment_top_bar"
+        android:layout_marginTop="30dp"
         android:layout_alignParentTop="true"
         android:layout_height="?attr/actionBarSize"
         android:orientation="horizontal">
